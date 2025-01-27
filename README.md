@@ -1,1 +1,4 @@
 # Divvy
+
+## Author
+Angad Brar
