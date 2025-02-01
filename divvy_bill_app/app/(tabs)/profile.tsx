@@ -1,15 +1,15 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity} from 'react-native';
 import { auth } from '../../FirebaseConfig';
 import { router } from 'expo-router';
+import { useEffect } from 'react';
 import { Text, View } from '@/components/Themed';
 
-export default function TabOneScreen() {
+export default function ProfilePage() {
+  
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Divvy</Text>
-      <TouchableOpacity onPress={() => router.replace('/scan')}>
-        <Text>Scan Receipt</Text>
-      </TouchableOpacity>
+      <Text style={styles.title}>Profile</Text>
     </View>
   );
 }

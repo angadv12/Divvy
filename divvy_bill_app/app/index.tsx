@@ -1,8 +1,9 @@
-import { View, Text, SafeAreaView, TextInput, TouchableOpacity } from 'react-native'
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { useState } from 'react'
 import { auth } from '../FirebaseConfig'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { router } from 'expo-router'
+import { StyleSheet } from 'react-native'
 
 
 const index = () => {
@@ -30,8 +31,8 @@ const index = () => {
     }
     
     return (
-    <SafeAreaView>
-        <Text>Login</Text>
+    <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Login</Text>
         <TextInput placeholder='email' value={email} onChangeText={setEmail} />
         <TextInput placeholder='password' value={password} onChangeText={setPassword} secureTextEntry />
         <TouchableOpacity onPress={signIn}>
@@ -43,4 +44,22 @@ const index = () => {
     </SafeAreaView>
     )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: '80%',
+  },
+});
+
 export default index
