@@ -7,7 +7,7 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Divvy</Text>
-      <TouchableOpacity onPress={() => router.replace('/scan')}>
+      <TouchableOpacity onPress={() => router.replace('/camera')}>
         <Text>Scan Receipt</Text>
       </TouchableOpacity>
     </View>

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "divvy_bill_app",
-    "slug": "divvy_bill_app",
+    "slug": "divvy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -32,6 +32,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "32345c03-aa79-4a99-b122-3a4897155b8e"
+      }
+    },
+    "owner": "angadv12"
   }
 }
