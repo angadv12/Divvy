@@ -7,8 +7,7 @@
 Angad Brar
 
 ## Stack
-* React Native (tsx, expo router)
+* React Native (tsx, Expo Router)
 * Firebase (Auth, Firestore, Google OAuth2)
 * Tesseract OCR
 * PayPal API
-* Expo Camera
