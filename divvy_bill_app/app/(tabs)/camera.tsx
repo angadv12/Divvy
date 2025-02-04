@@ -8,7 +8,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 import PhotoPreviewSection from '@/components/PhotoPreviewSection';
 
 export default function Camera() {
-  const [facing, setFacing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
 
   const [photo, setPhoto] = useState<any>(null);
@@ -27,10 +26,6 @@ export default function Camera() {
         <Button onPress={requestPermission} title="Grant Permission" />
       </View>
     );
-  }
-
-  function toggleCameraFacing() {
-    setFacing(current => (current === 'back' ? 'front' : 'back'));
   }
 
   const handleTakePhoto = async () => {
@@ -52,11 +47,8 @@ export default function Camera() {
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
+      <CameraView style={styles.camera} ref={cameraRef}>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-            <MaterialIcons style={styles.icon} name="flip-camera-ios" size={44} color="white" />
-          </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={handleTakePhoto}>
             <MaterialIcons style={styles.icon} name="photo-camera" size={44} color="white" />
           </TouchableOpacity>
@@ -82,16 +74,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonContainer: {
-    flex: 1,
-    flexDirection: 'row',
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 20,
     backgroundColor: 'transparent',
-    margin: 64,
   },
   button: {
     flex: 1,
     alignSelf: 'flex-end',
     alignItems: 'center',
-    marginHorizontal: 20,
+    padding: 10,
     backgroundColor: 'white',
     borderRadius: 10,
   },

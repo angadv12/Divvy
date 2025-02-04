@@ -1,67 +1,53 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { View } from 'react-native';
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+// Import screens
+import HomeScreen from '@/app/(tabs)/index';
+import CameraScreen from '@/app/(tabs)/camera';
+import ProfileScreen from '@/app/(tabs)/profile';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof MaterialIcons>['name'];
-  color: string;
-}) {
+// Create the top tab navigator
+const Tab = createMaterialTopTabNavigator();
+
+// Function to render tab bar icons
+function TabBarIcon(props: { name: React.ComponentProps<typeof MaterialIcons>['name']; color: string }) {
   return <MaterialIcons size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
+    <Tab.Navigator
+      tabBarPosition='bottom'
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        swipeEnabled: true, // Enable swipe gestures
+        tabBarShowLabel: true, // Show tab labels
+        tabBarIndicatorStyle: { backgroundColor: 'blue' }, // Customize indicator color
+        tabBarStyle: { backgroundColor: 'white' }, // Customize tab background
       }}>
-      <Tabs.Screen
-        name="index"
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
         options={{
-          title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="home-filled" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="camera"
+      <Tab.Screen
+        name="Scan"
+        component={CameraScreen}
         options={{
-          title: 'Scan',
           tabBarIcon: ({ color }) => <TabBarIcon name="camera-alt" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="profile"
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
         options={{
-          title: 'Profile',
           tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,
-          headerRight: () => (
-            <Link href="/settings" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <MaterialIcons
-                    name="settings"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
         }}
       />
-    </Tabs>
+    </Tab.Navigator>
   );
 }
