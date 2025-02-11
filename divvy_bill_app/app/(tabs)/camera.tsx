@@ -50,7 +50,7 @@ export default function Camera() {
       <CameraView style={styles.camera} ref={cameraRef}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={handleTakePhoto}>
-            <MaterialIcons style={styles.icon} name="photo-camera" size={44} color="white" />
+            {/* <MaterialIcons style={styles.icon} name="photo-camera" size={44} color="white" /> */}
           </TouchableOpacity>
         </View>
       </CameraView>
@@ -77,15 +77,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     position: 'absolute',
     bottom: 20,
-    backgroundColor: 'transparent',
+    backgroundColor: '#bbb',
+    borderRadius: 999,
+    padding: 10,
   },
   button: {
     flex: 1,
     alignSelf: 'flex-end',
     alignItems: 'center',
-    padding: 10,
+    padding: 40,
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 999,
   },
   text: {
     fontSize: 24,

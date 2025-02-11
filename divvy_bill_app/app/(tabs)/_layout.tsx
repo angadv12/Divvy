@@ -3,6 +3,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { View } from 'react-native';
+import { useColorScheme } from '@/components/useColorScheme';
+import Colors from '@/constants/Colors';
 
 // Import screens
 import HomeScreen from '@/app/(tabs)/index';
@@ -18,31 +20,33 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof MaterialIcons>['n
 }
 
 export default function TabLayout() {
+  const theme = useColorScheme();
+
   return (
     <Tab.Navigator
       tabBarPosition='bottom'
       screenOptions={{
         swipeEnabled: true, // Enable swipe gestures
-        tabBarShowLabel: true, // Show tab labels
-        tabBarIndicatorStyle: { backgroundColor: 'blue' }, // Customize indicator color
-        tabBarStyle: { backgroundColor: 'white' }, // Customize tab background
+        tabBarShowLabel: false, // Show tab labels
+        tabBarIndicatorStyle: { backgroundColor: 'transparent' }, // Customize indicator color
+        tabBarStyle: { backgroundColor: Colors[theme ?? 'light'].background, paddingBottom: 30 }, // Customize tab background
       }}>
       <Tab.Screen
-        name="Home"
+        name="home"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="home-filled" color={color} />,
         }}
       />
       <Tab.Screen
-        name="Scan"
+        name="camera"
         component={CameraScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="camera-alt" color={color} />,
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="profile"
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,

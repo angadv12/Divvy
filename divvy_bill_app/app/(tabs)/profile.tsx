@@ -2,15 +2,15 @@ import { StyleSheet, TouchableOpacity} from 'react-native';
 import { auth } from '../../FirebaseConfig';
 import { router } from 'expo-router';
 import { useEffect } from 'react';
-import { Text, View } from '@/components/Themed';
+import { Text, View, SafeAreaView } from '@/components/Themed';
 
 export default function ProfilePage() {
   
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Profile</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>profile</Text>
+    </SafeAreaView>
   );
 }
 
@@ -18,11 +18,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    paddingTop: 20,
+    fontSize: 36,
+    fontWeight: '600',
   },
   separator: {
     marginVertical: 30,
