@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { ScanResultProvider } from '@/context/ScanResultContext';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -49,12 +50,14 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="settings" options={{ title: 'Settings',presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <ScanResultProvider>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="settings" options={{ title: 'Settings',presentation: 'modal' }} />
+        </Stack>
+      </ThemeProvider>
+    </ScanResultProvider>
   );
 }

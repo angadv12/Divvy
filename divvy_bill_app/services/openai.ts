@@ -4,18 +4,31 @@ const client = new OpenAI({
   apiKey: process.env['EXPO_PUBLIC_OPENAI_API_KEY'],
 });
 
-export const getChatResponse = async (prompt: string) => {
+export const analyzeReceiptImage = async (base64Image: string) => {
   try {
     const response = await client.responses.create({
       model: 'gpt-4.1-mini',
-      instructions: 'Your job is to extract items and their prices from images of receipts.',
-      input: prompt,
+      input: [
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'input_text',
+              text: 'Extract all items and their prices from this receipt image. Return ONLY a JSON array of objects with "item" and "price" keys. If the image does not contain a receipt, respond exactly with "failed to identify receipt, try again please".'
+            },
+            {
+              type: 'input_image',
+              image_url: `data:image/jpeg;base64,${base64Image}`,
+              detail: 'auto'
+            }
+          ]
+        }
+      ]
     });
 
-    console.log(response.output_text);
-    return response.output_text;
+    return (response as any).output_text ?? '';
   } catch (error) {
-    console.error("Error fetching AI response:", error);
+    console.error('Error analyzing receipt:', error);
     throw error;
   }
 };

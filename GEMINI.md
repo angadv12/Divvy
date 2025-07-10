@@ -50,6 +50,7 @@ My code must be 100% clean and tested. No exceptions.
 ## React Native & TypeScript Standards
 
 ### FORBIDDEN - NEVER DO THESE:
+- **NEVER CHANGE MODELS USED BY OPENAI** 
 - **NO `any` type** - Use specific types or `unknown` when necessary.
 - **NO `console.log()`** or other debug statements in final, committed code.
 - **NO large, monolithic components** - Break down complex UI into smaller, reusable components.

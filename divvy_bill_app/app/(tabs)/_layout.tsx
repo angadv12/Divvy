@@ -10,7 +10,8 @@ import Colors from '@/constants/Colors';
 import HomeScreen from '@/app/(tabs)/index';
 import CameraScreen from '@/app/(tabs)/camera';
 import ProfileScreen from '@/app/(tabs)/profile';
-import OpenaiTestScreen from '@/app/(tabs)/openai_test';
+import ResultsScreen from '@/app/(tabs)/results';
+import { useScanResult } from '@/context/ScanResultContext';
 
 // Create the top tab navigator
 const Tab = createMaterialTopTabNavigator();
@@ -22,6 +23,7 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof MaterialIcons>['n
 
 export default function TabLayout() {
   const theme = useColorScheme();
+  const { lastScan } = useScanResult();
 
   return (
     <Tab.Navigator
@@ -53,13 +55,16 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,
         }}
       />
-      <Tab.Screen
-        name="openai_test"
-        component={OpenaiTestScreen}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="psychology" color={color} />,
-        }}
-      />
+      {/* Conditionally render Results tab */}
+      {lastScan && (
+        <Tab.Screen
+          name="results"
+          component={ResultsScreen}
+          options={{
+            tabBarIcon: ({ color }) => <TabBarIcon name="receipt-long" color={color} />,
+          }}
+        />
+      )}
     </Tab.Navigator>
   );
 }
