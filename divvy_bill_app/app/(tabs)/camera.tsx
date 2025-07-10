@@ -1,7 +1,7 @@
 import { Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { auth } from '../../FirebaseConfig';
 import { router } from 'expo-router';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Text, View } from '@/components/Themed';
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -9,7 +9,6 @@ import PhotoPreviewSection from '@/components/PhotoPreviewSection';
 
 export default function Camera() {
   const [permission, requestPermission] = useCameraPermissions();
-
   const [photo, setPhoto] = useState<any>(null);
   const cameraRef = useRef<CameraView | null>(null);
   

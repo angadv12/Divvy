@@ -1,29 +1,29 @@
 import { TouchableOpacity, Image, StyleSheet } from 'react-native';
-import { AntDesign, Fontisto } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { CameraCapturedPicture } from 'expo-camera';
 import React from 'react'
 import { SafeAreaView, Text, View } from '@/components/Themed';
 
-const PhotoPreviewSection = ({
-    photo,
-    handleRetakePhoto,
-}: {
+interface PhotoPreviewSectionProps {
     photo: CameraCapturedPicture;
     handleRetakePhoto: () => void;
-}) => (
+}
+
+const PhotoPreviewSection: React.FC<PhotoPreviewSectionProps> = ({ photo, handleRetakePhoto }) => (
     <SafeAreaView style={styles.container}>
         <View style={styles.imageContainer}>
             <Image
                 style={styles.previewContainer}
                 source={{ uri: 'data:image/jpg;base64,' + photo.base64 }}
             />
-            {/* Overlay the close icon at the top left corner */}
             <TouchableOpacity style={styles.button} onPress={handleRetakePhoto}>
                 <AntDesign name="close" size={36} color="white" />
             </TouchableOpacity>
         </View>
     </SafeAreaView>
 );
+
+export default PhotoPreviewSection;
 
 const styles = StyleSheet.create({
     container:{
@@ -54,5 +54,3 @@ const styles = StyleSheet.create({
     }
 
 });
-
-export default PhotoPreviewSection;

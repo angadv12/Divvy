@@ -10,6 +10,7 @@ import Colors from '@/constants/Colors';
 import HomeScreen from '@/app/(tabs)/index';
 import CameraScreen from '@/app/(tabs)/camera';
 import ProfileScreen from '@/app/(tabs)/profile';
+import OpenaiTestScreen from '@/app/(tabs)/openai_test';
 
 // Create the top tab navigator
 const Tab = createMaterialTopTabNavigator();
@@ -50,6 +51,13 @@ export default function TabLayout() {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="openai_test"
+        component={OpenaiTestScreen}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="psychology" color={color} />,
         }}
       />
     </Tab.Navigator>

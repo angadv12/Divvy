@@ -28,8 +28,24 @@ export default function Settings() {
     }, []);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
-      <TouchableOpacity onPress={handleSignOut}>
+      <View style={styles.subsection}>
+        <Text style={styles.subsectionTitle}>Account</Text>
+        <Text>Email: {auth.currentUser?.email} </Text>
+      </View>
+
+      <View style={styles.subsection}>
+        <Text style={styles.subsectionTitle}>Preferences</Text>
+        <Text>Notifications</Text>
+        <Text>Security</Text>
+      </View>
+
+      <View style={styles.subsection}>
+        <Text style={styles.subsectionTitle}>Feedback</Text>
+        <TouchableOpacity style={styles.feedbackButton}>
+          <Text>Rate divvy</Text>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
         <Text>Sign Out</Text>
       </TouchableOpacity>
     </View>
@@ -37,19 +53,39 @@ export default function Settings() {
 }
 
 const styles = StyleSheet.create({
+  signOutButton: {
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 10,
+  },
   container: {
+    paddingTop: 25,
+    paddingBottom: 25,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
   },
-  title: {
-    fontSize: 20,
+  subsectionTitle: {
+    fontSize: 25,
     fontWeight: 'bold',
-    padding: 20,
+  },
+  subsection: {
+    width: '80%',
+    padding: 10,
+    marginBottom: 20,
   },
   separator: {
     marginVertical: 30,
     height: 1,
     width: '80%',
+  },
+  feedbackButton: {
+    width: '100%',
+    backgroundColor: '#222222',
+    padding: 10,
+    borderRadius: 10,
+    marginTop: 20,
+    marginLeft: -10,
   },
 });
