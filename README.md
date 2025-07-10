@@ -7,7 +7,7 @@
 Angad Brar
 
 ## Stack
-* React Native (tsx, Expo Router)
+* React Native (Expo Router)
 * Firebase (Auth, Firestore, Google OAuth2)
-* Tesseract OCR
+* GPT 4.1-mini for OCR
 * PayPal API
