@@ -1,0 +1,53 @@
+---
+alwaysApply: true
+---
+# Development Workflow & Standards ([GEMINI.md](mdc:../../GEMINI.md))
+
+## Workflow
+1. **Research → Plan → Implement** – never code before planning.
+2. Use *reality checkpoints* (after features, before new components, when tests fail).
+3. **Tests must be 💯 green**; failing tests are blocking – stop & fix.
+
+## Coding Standards (React-Native + TypeScript)
+* TypeScript only – no `any` (use `unknown`/specific types).
+* Functional components + hooks; break large UI into small reusable parts.
+* Styles via `StyleSheet.create`; no inline hard-coded styles.
+* Early returns, meaningful names, async/await, table-driven tests.
+
+### Forbidden
+* Do **NOT** change the OpenAI model strings.
+* No `console.log` in committed code.
+* No monolithic components or convention violations.
+
+## Project Structure Quick-Ref
+* `divvy_bill_app/app` – screens & navigation (Expo Router)
+* `divvy_bill_app/components` – reusable UI components
+* `divvy_bill_app/constants` – shared colour palette etc.
+
+Follow these rules on every change to keep the codebase stable and maintainable.
+
+
+# Development Workflow & Standards ([GEMINI.md](mdc:../../GEMINI.md))
+
+## Workflow
+1. **Research → Plan → Implement** – never code before planning.
+2. Use *reality checkpoints* (after features, before new components, when tests fail).
+3. **Tests must be 💯 green**; failing tests are blocking – stop & fix.
+
+## Coding Standards (React-Native + TypeScript)
+* TypeScript only – no `any` (use `unknown`/specific types).
+* Functional components + hooks; break large UI into small reusable parts.
+* Styles via `StyleSheet.create`; no inline hard-coded styles.
+* Early returns, meaningful names, async/await, table-driven tests.
+
+### Forbidden
+* Do **NOT** change the OpenAI model strings.
+* No `console.log` in committed code.
+* No monolithic components or convention violations.
+
+## Project Structure Quick-Ref
+* `divvy_bill_app/app` – screens & navigation (Expo Router)
+* `divvy_bill_app/components` – reusable UI components
+* `divvy_bill_app/constants` – shared colour palette etc.
+
+Follow these rules on every change to keep the codebase stable and maintainable.
