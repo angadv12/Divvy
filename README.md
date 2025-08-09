@@ -1,7 +1,7 @@
 # Divvy
 
 ## About
--> Scan Receipts -> Split Bills -> Direct PayPal Requests
+Scan Receipts -> Split Bills -> Direct PayPal Requests
 
 ## Author
 Angad Brar
